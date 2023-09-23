@@ -6,14 +6,14 @@
 
 <WidgetListOverlay />
 
-<div class="flex flex-col w-full max-h-[53rem] h-screen px-4 font-body">
+<div class="flex flex-col w-full max-h-[55rem] h-screen px-4 font-body">
 	<NavBar />
 	<div class="flex justify-center w-full h-full mb-4">
 		<div
 			class="w-full h-full px-4 py-4 bg-gray-100
 		
 		
-		rounded-xl max-w-screen-2xl max-h-[52rem]"
+		rounded-xl max-w-screen-2xl max-h-[54rem]"
 		>
 			<slot />
 		</div>
