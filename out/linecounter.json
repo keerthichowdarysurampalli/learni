@@ -1,0 +1,515 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "/Users/va/programming/Projects/learni",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2023-09-17 20:33:29",
+            "filesum": 73,
+            "codesum": 1977,
+            "commentsum": 447,
+            "blanksum": 282,
+            "statistics": {
+                ".js": {
+                    "code": 210,
+                    "comment": 135,
+                    "blank": 53
+                },
+                ".code-workspace": {
+                    "code": 39,
+                    "comment": 6,
+                    "blank": 0
+                },
+                ".svelte": {
+                    "code": 1313,
+                    "comment": 120,
+                    "blank": 143
+                },
+                ".html": {
+                    "code": 12,
+                    "comment": 0,
+                    "blank": 3
+                },
+                ".ts": {
+                    "code": 188,
+                    "comment": 186,
+                    "blank": 47
+                },
+                ".css": {
+                    "code": 40,
+                    "comment": 0,
+                    "blank": 3
+                },
+                ".md": {
+                    "code": 61,
+                    "comment": 0,
+                    "blank": 26
+                },
+                ".csv": {
+                    "code": 15,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".txt": {
+                    "code": 57,
+                    "comment": 0,
+                    "blank": 6
+                },
+                ".json": {
+                    "code": 39,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".local": {
+                    "code": 3,
+                    "comment": 0,
+                    "blank": 1
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": ".env.local"
+                },
+                {
+                    "blank": 6,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/details.md"
+                },
+                {
+                    "blank": 6,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/diff-details.md"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/diff.csv"
+                },
+                {
+                    "blank": 7,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/diff.md"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/diff.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/results.csv"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/results.json"
+                },
+                {
+                    "blank": 7,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/results.md"
+                },
+                {
+                    "blank": 3,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": ".VSCodeCounter/2023-09-17_20-31-40/results.txt"
+                },
+                {
+                    "blank": 2,
+                    "code": 19,
+                    "comment": 18,
+                    "filename": "convex/_generated/api.d.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 3,
+                    "comment": 18,
+                    "filename": "convex/_generated/api.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 7,
+                    "comment": 46,
+                    "filename": "convex/_generated/dataModel.d.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 24,
+                    "comment": 106,
+                    "filename": "convex/_generated/server.d.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 16,
+                    "comment": 66,
+                    "filename": "convex/_generated/server.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "convex/course.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "convex/schema.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 39,
+                    "comment": 6,
+                    "filename": "learni.code-workspace"
+                },
+                {
+                    "blank": 0,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src/app.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 6,
+                    "filename": "src/app.d.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src/app.html"
+                },
+                {
+                    "blank": 14,
+                    "code": 106,
+                    "comment": 7,
+                    "filename": "src/lib/components/Layouts/BigCol1.svelte"
+                },
+                {
+                    "blank": 14,
+                    "code": 94,
+                    "comment": 6,
+                    "filename": "src/lib/components/Layouts/BigCol2.svelte"
+                },
+                {
+                    "blank": 14,
+                    "code": 94,
+                    "comment": 6,
+                    "filename": "src/lib/components/Layouts/BigCol3.svelte"
+                },
+                {
+                    "blank": 2,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src/lib/components/Layouts/Layout.css"
+                },
+                {
+                    "blank": 25,
+                    "code": 133,
+                    "comment": 10,
+                    "filename": "src/lib/components/Layouts/layoutStore.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 145,
+                    "comment": 6,
+                    "filename": "src/lib/components/Layouts/SmallCol1.svelte"
+                },
+                {
+                    "blank": 9,
+                    "code": 144,
+                    "comment": 7,
+                    "filename": "src/lib/components/Layouts/SmallCol2.svelte"
+                },
+                {
+                    "blank": 8,
+                    "code": 143,
+                    "comment": 7,
+                    "filename": "src/lib/components/Layouts/SmallCol3.svelte"
+                },
+                {
+                    "blank": 17,
+                    "code": 115,
+                    "comment": 32,
+                    "filename": "src/lib/components/Layouts/WidgetListOverlay.svelte"
+                },
+                {
+                    "blank": 3,
+                    "code": 69,
+                    "comment": 0,
+                    "filename": "src/lib/components/NavBar.svelte"
+                },
+                {
+                    "blank": 38,
+                    "code": 244,
+                    "comment": 34,
+                    "filename": "src/lib/components/SearchBar.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/lib/components/Widgets/Announcements.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/lib/components/Widgets/Calendar.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/lib/components/Widgets/Chats.svelte"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 1,
+                    "filename": "src/lib/components/Widgets/Courses.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/lib/components/Widgets/Grades.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/lib/components/Widgets/Todo.svelte"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 1,
+                    "filename": "src/lib/constants/course.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/lib/constants/group.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 18,
+                    "filename": "src/lib/constants/permissions.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src/lib/convex/index.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 13,
+                    "comment": 3,
+                    "filename": "src/lib/convex/mutation/course.mutations.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src/lib/convex/query/course.query.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "src/lib/index.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 25,
+                    "comment": 4,
+                    "filename": "src/lib/utils/coursePermissions.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 18,
+                    "filename": "src/lib/utils/permissionHandler.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src/routes/+layout.svelte"
+                },
+                {
+                    "blank": 8,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "src/routes/+page.svelte"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 1,
+                    "filename": "src/routes/attendance/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/chat/+page.svelte"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src/routes/courses/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/courses/[id]/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/courses/[id]/assignments/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/courses/[id]/attendance/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/courses/[id]/chat/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/courses/[id]/course-content/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/courses/[id]/grades/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/events/+page.svelte"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 1,
+                    "filename": "src/routes/grades/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/groups/+page.svelte"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "src/routes/groups/[id]/+page.svelte"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src/routes/login/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/settings/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src/routes/user/+page.svelte"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src/routes/user/[id]/+page.svelte"
+                },
+                {
+                    "filename": "static/favicon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "static/fonts/InclusiveSans-Italic.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "static/fonts/InclusiveSans-Regular.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 7,
+                    "code": 9,
+                    "comment": 4,
+                    "filename": "svelte.config.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 2,
+                    "filename": "tailwind.config.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "vite.config.js"
+                }
+            ]
+        }
+    ]
+}

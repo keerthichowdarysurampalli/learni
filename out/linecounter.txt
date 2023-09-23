@@ -1,0 +1,100 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-09-17 20:33:29
+count workspace : /Users/va/programming/Projects/learni
+total files : 73
+total code lines : 1977
+total comment lines : 447
+total blank lines : 282
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .js|            210|            135|             53|     11|
+   |.code-workspace|             39|              6|              0|    2.0|
+   |        .svelte|           1313|            120|            143|     66|
+   |          .html|             12|              0|              3|   0.61|
+   |            .ts|            188|            186|             47|    9.5|
+   |           .css|             40|              0|              3|    2.0|
+   |            .md|             61|              0|             26|    3.1|
+   |           .csv|             15|              0|              0|   0.76|
+   |           .txt|             57|              0|              6|    2.9|
+   |          .json|             39|              0|              0|    2.0|
+   |         .local|              3|              0|              1|   0.15|
+   -------------------------------------------------------------------------
+.env.local, code is 3, comment is 0, blank is 1.
+.VSCodeCounter/2023-09-17_20-31-40/details.md, code is 20, comment is 0, blank is 6.
+.VSCodeCounter/2023-09-17_20-31-40/diff-details.md, code is 9, comment is 0, blank is 6.
+.VSCodeCounter/2023-09-17_20-31-40/diff.csv, code is 2, comment is 0, blank is 0.
+.VSCodeCounter/2023-09-17_20-31-40/diff.md, code is 12, comment is 0, blank is 7.
+.VSCodeCounter/2023-09-17_20-31-40/diff.txt, code is 19, comment is 0, blank is 3.
+.VSCodeCounter/2023-09-17_20-31-40/results.csv, code is 13, comment is 0, blank is 0.
+.VSCodeCounter/2023-09-17_20-31-40/results.json, code is 1, comment is 0, blank is 0.
+.VSCodeCounter/2023-09-17_20-31-40/results.md, code is 20, comment is 0, blank is 7.
+.VSCodeCounter/2023-09-17_20-31-40/results.txt, code is 38, comment is 0, blank is 3.
+convex/_generated/api.d.ts, code is 19, comment is 18, blank is 2.
+convex/_generated/api.js, code is 3, comment is 18, blank is 2.
+convex/_generated/dataModel.d.ts, code is 7, comment is 46, blank is 6.
+convex/_generated/server.d.ts, code is 24, comment is 106, blank is 13.
+convex/_generated/server.js, code is 16, comment is 66, blank is 8.
+convex/course.js, code is 38, comment is 0, blank is 7.
+convex/schema.js, code is 48, comment is 0, blank is 6.
+learni.code-workspace, code is 39, comment is 6, blank is 0.
+package.json, code is 38, comment is 0, blank is 0.
+src/app.css, code is 7, comment is 0, blank is 1.
+src/app.d.ts, code is 5, comment is 6, blank is 1.
+src/app.html, code is 12, comment is 0, blank is 3.
+src/lib/components/Layouts/BigCol1.svelte, code is 106, comment is 7, blank is 14.
+src/lib/components/Layouts/BigCol2.svelte, code is 94, comment is 6, blank is 14.
+src/lib/components/Layouts/BigCol3.svelte, code is 94, comment is 6, blank is 14.
+src/lib/components/Layouts/Layout.css, code is 33, comment is 0, blank is 2.
+src/lib/components/Layouts/layoutStore.ts, code is 133, comment is 10, blank is 25.
+src/lib/components/Layouts/SmallCol1.svelte, code is 145, comment is 6, blank is 9.
+src/lib/components/Layouts/SmallCol2.svelte, code is 144, comment is 7, blank is 9.
+src/lib/components/Layouts/SmallCol3.svelte, code is 143, comment is 7, blank is 8.
+src/lib/components/Layouts/WidgetListOverlay.svelte, code is 115, comment is 32, blank is 17.
+src/lib/components/NavBar.svelte, code is 69, comment is 0, blank is 3.
+src/lib/components/SearchBar.svelte, code is 244, comment is 34, blank is 38.
+src/lib/components/Widgets/Announcements.svelte, code is 4, comment is 0, blank is 0.
+src/lib/components/Widgets/Calendar.svelte, code is 4, comment is 0, blank is 0.
+src/lib/components/Widgets/Chats.svelte, code is 4, comment is 0, blank is 0.
+src/lib/components/Widgets/Courses.svelte, code is 6, comment is 1, blank is 1.
+src/lib/components/Widgets/Grades.svelte, code is 4, comment is 0, blank is 0.
+src/lib/components/Widgets/Todo.svelte, code is 4, comment is 0, blank is 0.
+src/lib/constants/course.js, code is 6, comment is 1, blank is 1.
+src/lib/constants/group.js, code is 4, comment is 0, blank is 0.
+src/lib/constants/permissions.js, code is 11, comment is 18, blank is 3.
+src/lib/convex/index.js, code is 6, comment is 0, blank is 2.
+src/lib/convex/mutation/course.mutations.js, code is 13, comment is 3, blank is 2.
+src/lib/convex/query/course.query.js, code is 0, comment is 0, blank is 0.
+src/lib/index.js, code is 0, comment is 1, blank is 0.
+src/lib/utils/coursePermissions.js, code is 25, comment is 4, blank is 9.
+src/lib/utils/permissionHandler.js, code is 9, comment is 18, blank is 2.
+src/routes/+layout.svelte, code is 16, comment is 0, blank is 2.
+src/routes/+page.svelte, code is 58, comment is 0, blank is 8.
+src/routes/attendance/+page.svelte, code is 4, comment is 1, blank is 1.
+src/routes/chat/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/courses/+page.svelte, code is 5, comment is 0, blank is 1.
+src/routes/courses/[id]/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/courses/[id]/assignments/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/courses/[id]/attendance/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/courses/[id]/chat/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/courses/[id]/course-content/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/courses/[id]/grades/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/events/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/grades/+page.svelte, code is 5, comment is 1, blank is 1.
+src/routes/groups/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/groups/[id]/+page.svelte, code is 7, comment is 1, blank is 2.
+src/routes/login/+page.svelte, code is 4, comment is 0, blank is 1.
+src/routes/settings/+page.svelte, code is 3, comment is 1, blank is 0.
+src/routes/user/+page.svelte, code is 1, comment is 0, blank is 0.
+src/routes/user/[id]/+page.svelte, code is 3, comment is 1, blank is 0.
+static/favicon.png, it is a binary file.
+static/fonts/InclusiveSans-Italic.ttf, it is a binary file.
+static/fonts/InclusiveSans-Regular.ttf, it is a binary file.
+svelte.config.js, code is 9, comment is 4, blank is 7.
+tailwind.config.js, code is 17, comment is 2, blank is 3.
+vite.config.js, code is 5, comment is 0, blank is 1.
+===============================================================================

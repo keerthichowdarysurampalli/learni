@@ -1,0 +1,35 @@
+@keyframes wiggle {
+    0% {
+        transform: scale(0.95) rotate(0deg);
+    }
+    25% {
+        transform: scale(0.95) rotate(-0.25deg);
+    }
+    50% {
+        transform: scale(0.95) rotate(0.25deg);
+    }
+    75% {
+        transform: scale(0.95) rotate(-0.25deg);
+    }
+    100% {
+        transform: scale(0.95) rotate(0deg);
+    }
+}
+
+.animate-wiggle {
+    animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.overlay-blur {
+    @apply flex-col gap-2 ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}

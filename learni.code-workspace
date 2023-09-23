@@ -1,0 +1,45 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"[svelte]": {
+			"editor.defaultFormatter": "svelte.svelte-vscode",
+		},
+		"tailwindCSS.includeLanguages": {
+			"svelte": "html"
+		},
+		"svelte.enable-ts-plugin": true,
+		"svelte.ui.svelteKitFilesContextMenu.enable": "always",
+		"files.exclude": {
+			//* source code files
+			"**/src": false,
+			// "**/static": true,
+			"**/tests": true,
+			"**/package.json": false,
+			"**/README.md": true,
+			//! config files
+			"**/svelte-playground.code-workspace": true,
+			"**/jsconfig.json": true,
+			"**/bun.lockb": true,
+			"**/.eslintignore": true,
+			"**/.eslintrc.cjs": true,
+			"**/.gitignore": true,
+			"**/.npmrc": true,
+			"**/.prettierignore": true,
+			"**/.prettierrc": true,
+			"**/.svelte-kit": true,
+			"**/.vscode": true,
+			"**/node_modules": true,
+			"**/pnpm-lock.yaml": true,
+			"**/playwright.config.ts": true,
+			"**/postcss.config.js": true,
+			// "**/svelte.config.js": true,
+			"**/tsconfig.json": true,
+			// "**/vite.config.js": true,
+			// "**/tailwind.config.js": true,
+		},
+	}
+}
