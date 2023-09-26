@@ -20,6 +20,10 @@
     animation: wiggle 0.5s ease-in-out infinite;
 }
 
+.widget-container {
+    @apply relative z-10 h-full px-4 py-4 duration-200 bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+}
+
 .overlay-blur {
     @apply flex-col gap-2 ;
     position: absolute;

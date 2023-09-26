@@ -4,10 +4,46 @@ export const col1EditToggle = writable(false);
 export const col2EditToggle = writable(false);
 export const col3EditToggle = writable(false);
 
+export const toggleColEdit = (col: number, toggle: boolean) => {
+    if (col === 1) {
+        col1EditToggle.update((edit: boolean) => {
+            return toggle;
+        });
+    }
+    if (col === 2) {
+        col2EditToggle.update((edit: boolean) => {
+            return toggle;
+        });
+
+    }
+
+    if (col === 3) {
+        col3EditToggle.update((edit: boolean) => {
+            return toggle;
+        });
+
+    }
+}
+
+
+
+export const getEditToggle = (col: number) => {
+    if (col === 1) {
+        return col1EditToggle;
+    }
+    if (col === 2) {
+        return col2EditToggle;
+    }
+    if (col === 3) {
+        return col3EditToggle;
+    }
+}
+
 export const showWidgetList = writable(false);
 
+export const selectedCol = writable('NONE');
 
-export const dragWidget = writable(0);
+export const widgetClicked = writable(false);
 
 export const ANNONUCEMENTS = 1;
 export const CALENDAR = 2;
@@ -23,11 +59,12 @@ export const widgetNames = {
     3: "Chats",
     4: "Courses",
     5: "Grades",
-    6: "To Do",
+    6: "Todo",
     7: "Profile"
 };
 
 export const Layout = writable(203457);
+
 
 const _validateColWidgets = (col: number, widgets: number[]) => {
 
@@ -73,29 +110,28 @@ export function setCol(col: number, ...widgets: number[]) {
             }
         });
 }
-
+/**
+ * This function takes in a column number and a boolean value and changes the column to full or half
+ * @param col this is the column number that the widget is being set to min: 1 max value: 3
+ * @param full this is a boolean value that determines if the column is full or half
+ * @returns a modified layout number
+ * @throws an error if the column number is invalid
+ * @throws an error if the column is already full or half
+*/
 
 export function changeCol(col: number, full: boolean) {
     Layout.update((layout: number) => {
         if (col < 1 || col > 3) {
             throw new Error("Invalid column number");
         }
-
-
         const firstWidget = Math.floor(_getCol(layout, col) / 10);
-        console.log(firstWidget);
-
         if (full) {
             if (_isColFull(layout, col)) return layout;
-            console.log(layout);
-
             layout = _setCol(layout, col, firstWidget);
 
         } else {
-            console.log(layout);
             layout = _setCol(layout, col, firstWidget, 1);
         }
-        console.log(layout);
         return layout;
     });
 }
@@ -117,6 +153,20 @@ export const isColFull = derived(Layout, $layout => {
                 return $layout % 10 === 0;
         }
     };
+});
+
+export const getColEditToggle = derived([col1EditToggle, col2EditToggle, col3EditToggle], ([$col1EditToggle, $col2EditToggle, $col3EditToggle]) => {
+    return (col: number) => {
+        if (col === 1) {
+            return $col1EditToggle;
+        }
+        if (col === 2) {
+            return $col2EditToggle;
+        }
+        if (col === 3) {
+            return $col3EditToggle;
+        }
+    }
 });
 
 
