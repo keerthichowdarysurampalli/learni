@@ -2,8 +2,6 @@
 	// @ts-nocheck
 
 	import { quintOut } from 'svelte/easing';
-	import Icon from '@iconify/svelte';
-	import dotsThreeOutlineVerticalFill from '@iconify/icons-ph/dots-three-outline-vertical-fill';
 	import {
 		ANNONUCEMENTS,
 		CALENDAR,
@@ -12,7 +10,6 @@
 		PROFILE,
 		TODO,
 		GRADES,
-		widgetClicked,
 		widgetNames
 	} from '$lib/components/Layouts/layoutStore';
 

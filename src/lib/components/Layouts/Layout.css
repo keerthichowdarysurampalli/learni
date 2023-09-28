@@ -21,7 +21,7 @@
 }
 
 .widget-container {
-    @apply relative z-10 h-full px-4 py-4 duration-200 bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+    @apply relative z-10 h-full px-4 py-4 duration-300 bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
 }
 
 .overlay-blur {
@@ -36,4 +36,23 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-}
+    overflow: hidden; /* Prevent child elements from overflowing */
+  }
+  
+  .overlay-blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    opacity: 0.3;
+    backdrop-filter: blur(1px);
+    z-index: -1;
+    /* Use background-clip to apply background to only the padding-box */
+    background-clip: padding-box;
+  }
+  
+  /* Rest of your styles for child elements */
+  

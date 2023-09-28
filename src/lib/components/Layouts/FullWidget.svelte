@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
-	import dotsThreeOutlineVerticalFill from '@iconify/icons-ph/dots-three-outline-vertical-fill';
 	import { onMount } from 'svelte';
 	import './Layout.css';
 	import {
@@ -10,17 +8,26 @@
 		selectedCol,
 		showWidgetList,
 		getColEditToggle,
-		toggleColEdit
+		toggleColEdit,
+		getColWidgets,
+
+		getHeading
+
 	} from './layoutStore';
 	import EditWidget from './EditWidget.svelte';
 	import WidgetsListOverlay from './WidgetsListOverlay.svelte';
 	import WidgetOptions from './WidgetOptions.svelte';
+	import { quintOut } from 'svelte/easing';
+	import { scale, slide } from 'svelte/transition';
 
 	export let colNumber: number;
 
 	const ButtonName = `fullCol${colNumber}`;
 
 	let timer: number | undefined;
+	
+	const link = '/' + getHeading($getColWidgets(colNumber).firstWidget).toLowerCase();
+	console.log(link);
 
 	function handleClickOutside(event: any) {
 		const container = document.getElementById(ButtonName);
@@ -66,13 +73,43 @@
 	}
 </script>
 
+<style>
+	/* Common styles for all corner divs */
+.corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: -50;
+}
+
+/* Common styles for the glow effect */
+.corner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(52, 211, 153, 1); /* Adjust the color and opacity as needed */
+  filter: blur(16px); /* Adjust the blur amount */
+  z-index: -1;
+}
+
+</style>
+
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class={`${classStyle}
+	in:scale={{
+		duration: 500,
+		opacity: 0,
+		start: 0.95,
+		easing: quintOut
+	}}
+	class={`${classStyle} 
 	${
 		$getColEditToggle(colNumber)
-			? `border-dashed border-2 scale-95 shadow-lg ${
-					$selectedCol === `${ButtonName}` ? 'border-emerald-400 border-double border-2' : ''
+			? `border scale-95 hover:border-emerald-400 hover:shadow-2xl cursor-pointer ${
+					$selectedCol === `${ButtonName}` ? 'border-emerald-400 shadow-2xl' : ''
 			  }`
 			: 'scale-100'
 	} 
@@ -87,13 +124,21 @@
 		}
 	}}
 >
-	<div class="flex flex-row justify-between">
-		<h1 class="text-lg font-bold">
-			<slot name="top-heading">{ButtonName}</slot>
-		</h1>
+
+<!-- <div class="absolute top-0 bg-center corner bg-emerald-300" />
+<div class="absolute bottom-0 bg-center corner bg-emerald-300" />
+<div class="absolute top-0 right-0 bg-center corner bg-emerald-300" />
+<div class="absolute bottom-0 right-0 bg-center corner bg-emerald-300" /> -->
+
+
+
+<div class="flex flex-row justify-between mb-2">
+		<a class="text-lg font-bold" href={link}>
+			<slot name="heading">{ButtonName}</slot>
+		</a>
 		<WidgetOptions {colNumber} />
 	</div>
-	<slot name="top">Body</slot>
+	<slot name="body">Body</slot>
 	{#if $getColEditToggle(colNumber)}
 		<EditWidget {colNumber} />
 	{/if}

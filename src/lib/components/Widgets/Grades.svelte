@@ -1,4 +1,7 @@
+<script>
+	export let isFull = false;
+	</script>
+	
 <div>
-	<h1>Grades</h1>
 	<p>Grades go here.</p>
 </div>

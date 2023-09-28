@@ -1,5 +1,4 @@
 <script lang="ts">
-	// your script goes here
 	import dotsThreeOutlineVerticalFill from '@iconify/icons-ph/dots-three-outline-vertical-fill';
 	import Icon from '@iconify/svelte';
 
@@ -74,7 +73,7 @@
 				{#if isFull}
 					Split Widget
 				{:else}
-					Merge Widget
+					Expand Widget
 				{/if}
 			</button>
 			<button

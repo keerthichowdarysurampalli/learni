@@ -11,10 +11,14 @@
 </script>
 
 <div in:fade={{ duration: 100 }} class="rounded-lg overlay-blur">
-	<div class="flex flex-row border border-gray-200 rounded-md" role="group" aria-label="View Mode">
+	<div
+		class="flex flex-row bg-opacity-100 border border-gray-200 rounded-md"
+		role="group"
+		aria-label="View Mode"
+	>
 		<button
-			class={`flex items-center justify-center text-xl h-10 w-10  rounded-l-md ${
-				$isColFull(colNumber) ? 'bg-black text-white' : 'bg-white'
+			class={`flex items-center justify-center text-xl h-10 w-10  rounded-l-md  ${
+				$isColFull(colNumber) ? 'bg-emerald-400 text-white' : 'bg-white'
 			}`}
 			on:click={() => changeCol(colNumber, true)}
 		>
@@ -22,7 +26,7 @@
 		</button>
 		<button
 			class={`flex items-center justify-center text-xl h-10 w-10 rounded-r-md ${
-				!$isColFull(colNumber) ? 'bg-black text-white' : 'bg-white'
+				!$isColFull(colNumber) ? 'bg-emerald-400 text-white' : 'bg-white'
 			}`}
 			on:click={() => changeCol(colNumber, false)}
 		>

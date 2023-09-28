@@ -12,8 +12,8 @@
 	import houseLight from '@iconify/icons-ph/house-light';
 </script>
 
-<div class="flex justify-center">
-	<div class="flex flex-row items-center w-full py-2 my-2 h-14 md:justify-between max-w-screen-2xl">
+<div class="flex justify-center px-2">
+	<div class="z-50 flex flex-row items-center w-full h-16 py-2 mt-4 md:justify-between max-w-screen-2xl">
 		<Icon icon={listLight} width="28" class="flex lg:hidden" />
 
 		<div class="flex-row items-center hidden gap-4 lg:flex">
@@ -63,10 +63,6 @@
 			>
 				V
 			</a>
-			<button
-				class="hidden px-4 py-2 duration-300 bg-gray-100 rounded-xl hover:bg-red-200 hover:text-white md:flex"
-				>logout</button
-			>
 		</div>
 	</div>
 </div>

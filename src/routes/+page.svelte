@@ -21,6 +21,6 @@
 	<!-- head content -->
 </svelte:head>
 
-<div class="grid w-full h-full grid-rows-2 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid w-full h-full grid-rows-2 gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 	<Widgets />
 </div>

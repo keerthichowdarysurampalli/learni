@@ -1,4 +1,11 @@
 import { derived, writable } from "svelte/store";
+	import Announcements from '../Widgets/Announcements.svelte';
+	import Calendar from '../Widgets/Calendar.svelte';
+	import Chats from '../Widgets/Chats.svelte';
+	import Courses from '../Widgets/Courses.svelte';
+	import Grades from '../Widgets/Grades.svelte';
+	import Todo from '../Widgets/Todo.svelte';
+	import Profile from '../Widgets/Profile.svelte';
 
 export const col1EditToggle = writable(false);
 export const col2EditToggle = writable(false);
@@ -25,19 +32,20 @@ export const toggleColEdit = (col: number, toggle: boolean) => {
     }
 }
 
+export const getColEditToggle = derived([col1EditToggle, col2EditToggle, col3EditToggle], ([$col1EditToggle, $col2EditToggle, $col3EditToggle]) => {
+    return (col: number) => {
+        if (col === 1) {
+            return $col1EditToggle;
+        }
+        if (col === 2) {
+            return $col2EditToggle;
+        }
+        if (col === 3) {
+            return $col3EditToggle;
+        }
+    }
+});
 
-
-export const getEditToggle = (col: number) => {
-    if (col === 1) {
-        return col1EditToggle;
-    }
-    if (col === 2) {
-        return col2EditToggle;
-    }
-    if (col === 3) {
-        return col3EditToggle;
-    }
-}
 
 export const showWidgetList = writable(false);
 
@@ -63,12 +71,13 @@ export const widgetNames = {
     7: "Profile"
 };
 
-export const Layout = writable(203457);
+export const Col1 = 1;
+export const Col2 = 2;
+export const Col3 = 4;
 
+export const Widgets = writable(746130);
 
 const _validateColWidgets = (col: number, widgets: number[]) => {
-
-    console.log(col, widgets);
 
     if (col < 1 || col > 3) {
         throw new Error("Invalid column number");
@@ -87,7 +96,7 @@ const _validateColWidgets = (col: number, widgets: number[]) => {
 
 export function setCol(col: number, ...widgets: number[]) {
     _validateColWidgets(col, widgets);
-    Layout.update(
+    Widgets.update(
         (layout: number) => {
             switch (col) {
                 case 1:
@@ -110,17 +119,9 @@ export function setCol(col: number, ...widgets: number[]) {
             }
         });
 }
-/**
- * This function takes in a column number and a boolean value and changes the column to full or half
- * @param col this is the column number that the widget is being set to min: 1 max value: 3
- * @param full this is a boolean value that determines if the column is full or half
- * @returns a modified layout number
- * @throws an error if the column number is invalid
- * @throws an error if the column is already full or half
-*/
 
 export function changeCol(col: number, full: boolean) {
-    Layout.update((layout: number) => {
+    Widgets.update((layout: number) => {
         if (col < 1 || col > 3) {
             throw new Error("Invalid column number");
         }
@@ -136,10 +137,7 @@ export function changeCol(col: number, full: boolean) {
     });
 }
 
-/**
- * isColFull takes in a column number and returns a boolean value denoting if the column is full ()
- */
-export const isColFull = derived(Layout, $layout => {
+export const isColFull = derived(Widgets, $layout => {
     return (col: number) => {
         if (col < 1 || col > 3) {
             throw new Error("Invalid column number");
@@ -155,28 +153,20 @@ export const isColFull = derived(Layout, $layout => {
     };
 });
 
-export const getColEditToggle = derived([col1EditToggle, col2EditToggle, col3EditToggle], ([$col1EditToggle, $col2EditToggle, $col3EditToggle]) => {
+export const getColWidgets = derived(Widgets, $layout => {
+
     return (col: number) => {
-        if (col === 1) {
-            return $col1EditToggle;
-        }
-        if (col === 2) {
-            return $col2EditToggle;
-        }
-        if (col === 3) {
-            return $col3EditToggle;
-        }
+        const currentCol = _getCol($layout, col);
+        const firstWidget = Math.floor(currentCol / 10);
+        const secondWidget = currentCol % 10;
+
+        return {
+            firstWidget,
+            secondWidget
+        };
     }
 });
 
-
-/**
- * 
- * @param layout takes in a layout number
- * @param col this is the column number that the widget is being set to min: 1 max value: 3
- * @param widgets widgets that are being set to the column max widget number is: 1 and min: 7
- * @returns a modified layout number
- */
 const _setCol = (layout: number, col: number, ...widgets: number[]) => {
     _validateColWidgets(col, widgets);
     switch (col) {
@@ -200,7 +190,7 @@ const _setCol = (layout: number, col: number, ...widgets: number[]) => {
     }
 };
 
-const _getCol = (layout: number, col: number) => {
+export const _getCol = (layout: number, col: number) => {
     switch (col) {
         case 1: return Math.floor(layout / 10000);
         case 2: return Math.floor(layout / 100) % 100;
@@ -214,5 +204,46 @@ const _isColFull = (layout: number, col: number) => {
         case 1: return Math.floor(layout / 10000) % 10 === 0;
         case 2: return Math.floor(layout / 100) % 10 === 0;
         case 3: return layout % 10 === 0;
+    }
+};
+
+
+export const getHeading = (widget: number) => {
+    switch (widget) {
+        case 1:
+            return 'Announcements';
+        case 2:
+            return 'Calendar';
+        case 3:
+            return 'Chats';
+        case 4:
+            return 'Courses';
+        case 5:
+            return 'Grades';
+        case 6:
+            return 'Todo';
+        case 7:
+            return 'Profile';
+        default:
+            return 'Error';
+    }
+};
+
+export const getBody = (widget: number) => {
+    switch (widget) {
+        case 1:
+            return Announcements;
+        case 2:
+            return Calendar;
+        case 3:
+            return Chats;
+        case 4:
+            return Courses;
+        case 5:
+            return Grades;
+        case 6:
+            return Todo;
+        case 7:
+            return Profile;
     }
 };

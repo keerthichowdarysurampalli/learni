@@ -3,7 +3,7 @@
 const debugScreens = require('tailwindcss-debug-screens');
 
 export default {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ['./src/**/*.{html,js,svelte,ts,css}'],
   theme: {
     extend: {
       fontFamily: {
