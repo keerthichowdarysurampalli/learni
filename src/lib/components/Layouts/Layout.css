@@ -21,7 +21,7 @@
 }
 
 .widget-container {
-    @apply relative z-10 h-full px-4 py-4 duration-300 bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+    @apply relative z-10 h-full px-4 py-4 duration-300 bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding select-none;
 }
 
 .overlay-blur {

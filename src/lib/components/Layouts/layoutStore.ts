@@ -1,15 +1,38 @@
 import { derived, writable } from "svelte/store";
-	import Announcements from '../Widgets/Announcements.svelte';
-	import Calendar from '../Widgets/Calendar.svelte';
-	import Chats from '../Widgets/Chats.svelte';
-	import Courses from '../Widgets/Courses.svelte';
-	import Grades from '../Widgets/Grades.svelte';
-	import Todo from '../Widgets/Todo.svelte';
-	import Profile from '../Widgets/Profile.svelte';
+import Announcements from '../Widgets/Announcements.widget.svelte';
+import Calendar from '../Widgets/Calendar.widget.svelte';
+import Chats from '../Widgets/Chats.widget.svelte';
+import Courses from '../Widgets/Courses.widget.svelte';
+import Grades from '../Widgets/Grades.widget.svelte';
+import Todo from '../Widgets/Todo.widget.svelte';
+import Profile from '../Widgets/Profile.widget.svelte';
 
 export const col1EditToggle = writable(false);
 export const col2EditToggle = writable(false);
 export const col3EditToggle = writable(false);
+
+
+export const COL1 = 10;
+export const COL2 = 20;
+export const COL3 = 30;
+
+export const COL1_TOP = 11;
+export const COL2_TOP = 21;
+export const COL3_TOP = 31;
+
+export const COL1_BOTTOM = 12;
+export const COL2_BOTTOM = 22;
+export const COL3_BOTTOM = 32;
+
+
+
+export const editToggledWidget = writable(-1);
+// -1 means no widget is toggled
+// 0 means all widgets are toggled
+// 1 means first widget is toggled FULL
+// 2 means second widget is toggled FULL
+// 3 means first widget is toggled FULL
+
 
 export const toggleColEdit = (col: number, toggle: boolean) => {
     if (col === 1) {
@@ -75,7 +98,7 @@ export const Col1 = 1;
 export const Col2 = 2;
 export const Col3 = 4;
 
-export const Widgets = writable(746130);
+export const Widgets = writable(456130);
 
 const _validateColWidgets = (col: number, widgets: number[]) => {
 

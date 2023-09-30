@@ -12,10 +12,13 @@
 		col2EditToggle,
 		col3EditToggle,
 		isColFull,
-		showWidgetList
+		showWidgetList,
+		editToggledWidget
 	} from './layoutStore';
+	import { editLayout, editWidget } from '$lib/actions/widgetOptions';
 	let showWidgetOptions = false;
 	export let colNumber: number;
+	export let widgetPos: number;
 
 	const isFull = $isColFull(colNumber);
 </script>
@@ -51,17 +54,9 @@
 		>
 			<button
 				class="w-full px-4 py-2 text-center duration-200 bg-white hover:text-emerald-400 rounded-t-xl"
-				on:click={() => {
-					if (colNumber === 1) {
-						$col1EditToggle = true;
-					} else if (colNumber === 2) {
-						$col2EditToggle = true;
-					} else if (colNumber === 3) {
-						$col3EditToggle = true;
-					}
-					// $col1EditToggle = true;
-					$showWidgetList = true;
-				}}>Edit Widget</button
+				use:editWidget={{ colNumber, widgetPos }}
+
+				>Edit Widget</button
 			>
 			<button
 				class="w-full px-4 py-2 text-center duration-200 bg-white hover:text-emerald-400"
@@ -77,14 +72,30 @@
 				{/if}
 			</button>
 			<button
+				use:editLayout
 				class="w-full px-4 py-2 text-center duration-200 bg-white hover:text-emerald-400 rounded-b-xl"
-				on:click={() => {
-					$col1EditToggle = true;
-					$col2EditToggle = true;
-					$col3EditToggle = true;
-					$showWidgetList = true;
-				}}>Edit Layout</button
+				>Edit Layout</button
 			>
 		</div>
 	{/if}
 </button>
+
+<!-- on:click={() => {
+	$col1EditToggle = true;
+	$col2EditToggle = true;
+	$col3EditToggle = true;
+	$showWidgetList = true;
+}} -->
+
+
+<!-- 				on:click={() => {
+					if (colNumber === 1) {
+						$col1EditToggle = true;
+					} else if (colNumber === 2) {
+						$col2EditToggle = true;
+					} else if (colNumber === 3) {
+						$col3EditToggle = true;
+					}
+					// $col1EditToggle = true;
+					$showWidgetList = true;
+				}} -->

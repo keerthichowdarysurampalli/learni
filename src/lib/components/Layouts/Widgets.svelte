@@ -1,7 +1,8 @@
 <script lang="ts">
 	import FullWidget from './FullWidget.svelte';
 	import SplitWidget from './SplitWidget.svelte';
-	import { isColFull, _getCol, getColWidgets, getHeading, getBody } from '$lib/components/Layouts/layoutStore';
+	import { isColFull, _getCol, getColWidgets, getHeading, getBody, showWidgetList } from '$lib/components/Layouts/layoutStore';
+	import WidgetsListOverlay from './WidgetsListOverlay.svelte';
 </script>
 
 {#if $isColFull(1)}
@@ -69,4 +70,8 @@
 		</div>
 		<svelte:component this={getBody($getColWidgets(3).secondWidget)} isFull={false} slot="bottom-body" />
 	</SplitWidget>
+{/if}
+
+{#if $showWidgetList}
+	<WidgetsListOverlay />
 {/if}
