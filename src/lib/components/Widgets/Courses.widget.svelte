@@ -184,7 +184,7 @@
 				class="w-full px-4 py-4 duration-500 bg-white border border-white shadow-sm cursor-pointer rounded-xl group snap-center"
 			>
 				<div class="flex flex-row items-center justify-between overflow-auto">
-					<p class="text-xl">{course.name}</p>
+					<h2>{course.name}</h2>
 					<Icon
 						icon={arrowRightLight}
 						class="mr-3 text-2xl text-gray-400 duration-500 group-hover:text-emerald-400 group-hover:mr-0"

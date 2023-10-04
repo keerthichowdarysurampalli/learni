@@ -27,14 +27,13 @@
 			class="p-4 duration-300 bg-white border border-white border-dashed shadow-lg cursor-pointer hover:shadow-none hover:border-gray-300 rounded-xl"
 			on:click={() => {
 				console.log('hi');
-
 				console.log(widget);
 			}}
 		>
 			<div class="flex flex-row items-center justify-between">
-				<h1 class="text-xs font-bold">
+				<h4 class="text-xs font-bold">
 					{widgetNames[widget]}
-				</h1>
+				</h4>
 			</div>
 		</button>
 	{/each}

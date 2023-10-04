@@ -1,7 +1,14 @@
 <script>
+	import { currentPath, currentPathModified } from '$lib/stores/pathStore';
+	import { onMount } from 'svelte';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 	console.log(data);
+	onMount(() => {
+		$currentPathModified = `/courses/${data.course?.name}`;
+		$currentPath = window.location.pathname;
+	});
 </script>
 
 {#if data.course}

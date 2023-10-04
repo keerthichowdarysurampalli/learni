@@ -12,6 +12,13 @@
 
 <script>
 	import Widgets from '$lib/components/Layouts/Widgets.svelte';
+	import { currentPath, currentPathModified } from '$lib/stores/pathStore';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		$currentPath = window.location.pathname;
+		$currentPathModified = window.location.pathname;
+	});
 </script>
 
 <svelte:head>

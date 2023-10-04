@@ -12,6 +12,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
+    "@iconify/icons-fa6-solid": "^1.2.13",
     "@iconify/icons-ph": "^1.2.4",
     "@iconify/json": "^2.2.115",
     "@iconify/svelte": "^3.1.4",

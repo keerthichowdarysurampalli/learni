@@ -15,8 +15,12 @@
 
 	import { fade, slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
+	import caretRightLight from '@iconify/icons-ph/caret-right-light';
+	import { currentPath, truncatePath } from '$lib/stores/pathStore';
+	import { split } from 'postcss/lib/list';
+	import { currentPathModified } from '$lib/stores/pathStore';
 
 	const searchClicked = writable(false);
 	const showPlaceholder = writable(true);
@@ -64,6 +68,8 @@
 		};
 	});
 
+	console.log($currentPath);
+
 	onMount(() => {
 		function handleClickOutside(event: any) {
 			if (!event.target.closest('.search-container')) {
@@ -78,6 +84,13 @@
 		// onDestroy(() => {
 		// 	document.removeEventListener('click', handleClickOutside);
 		// });
+	});
+
+	$: path = [''];
+
+	onMount(() => {
+		path = window.location.pathname.split('/').filter((item) => item !== '');
+		console.log(path);
 	});
 
 	// Attach this function to the 'keydown' event of your contenteditable div
@@ -208,105 +221,142 @@
 </script>
 
 <!-- * Main Outer DIV START-->
-
-<div
-	role="button"
-	tabindex="0"
-	on:click={() => ($searchClicked = true)}
-	on:keydown={(e) => {
-		if (e.key === 'Enter') {
-			$searchClicked = true;
-		}
-	}}
-	class={`relative z-40 w-full h-full md:max-w-lg  search-container duration-300 backdrop-blur-lg  bg-white ml-2 px-4 ${
-		$searchClicked ? 'rounded-t-xl bg-opacity-100' : 'rounded-lg bg-opacity-50'
-	}`}
->
-	<!-- * Placeholders START -->
-	<!-- {#if $showPlaceholder} -->
+<div class="relative flex flex-row items-center justify-center w-full h-full gap-2">
 	<div
-		class={`absolute inset-0 flex items-center justify-between  duration-300 px-3 bg-transparent  text-gray-400 pointer-events-none`}
-	>
-		<!-- <i class="ml-1 fas fa-search" /> -->
-		<Icon icon={magnifyingGlass} class="text-gray-600" />
-		<div
-			class={`flex items-center justify-center py-3 text-gray-600  
-				}`}
-		>
-			{#if $searchClicked}
-				<div
-					class="flex flex-row items-center px-2 mx-1 text-sm text-center bg-gray-300 rounded-md"
-				>
-					Esc
-				</div>
-			{:else if isMac}
-				<div
-					class="flex flex-row items-center px-2 mx-1 text-sm text-center bg-gray-300 rounded-md"
-				>
-					<Icon icon={commandIcon} />
-					<div>K</div>
-				</div>
-			{:else}
-				<div
-					class="flex flex-row items-center px-2 mx-1 text-sm text-center bg-gray-300 rounded-md"
-				>
-					<span>Ctrl K</span>
-				</div>
-			{/if}
-		</div>
-	</div>
-	<!-- {/if} -->
-	<!-- * Placeholders END -->
-	<!-- ! Search Bar START -->
-	<div
-		role="textbox"
+		role="button"
 		tabindex="0"
-		bind:this={inputElement}
-		contenteditable="true"
-		class={`flex items-center w-full h-12 px-4 rounded-lg outline-none  md:max-w-lg cursor-text focus:outline-none padded-text editable duration-300 ${
-			$searchClicked ? 'outline-none  bg-white' : 'outline-none  bg-transparent'
+		on:click={() => ($searchClicked = true)}
+		on:keydown={(e) => {
+			if (e.key === 'Enter') {
+				$searchClicked = true;
+			}
+		}}
+		class={`
+		${
+			$currentPathModified.startsWith('/courses') &&
+			$currentPathModified.split('/').filter((item) => item !== '').length > 1
+				? 'w-full'
+				: 'w-full'
+		}
+		h-full md:max-w-lg  search-container duration-300 backdrop-blur-lg  bg-white ml-2 px-4 ${
+			$searchClicked ? 'rounded-t-xl bg-opacity-100 w-full' : 'rounded-lg bg-opacity-50'
 		}`}
-		data-placeholder="Search"
-		on:keydown={handleKeyDown}
-		on:input={handleInput}
 	>
-		‎
-	</div>
-	<!-- ! Search Bar END -->
-
-	<!-- ? Search Results and Tags Div START -->
-	{#if $searchClicked}
+		<!-- * Placeholders START -->
+		<!-- {#if $showPlaceholder} -->
 		<div
-			on:keydown={() => {}}
-			tabindex="0"
-			transition:slide={{ duration: 300, easing: quintOut, axis: 'y' }}
-			role="textbox"
-			on:click|stopPropagation
-			class="absolute z-50 flex flex-col justify-center w-full px-2 py-2 overflow-y-scroll transform -translate-x-1/2 bg-white rounded-b-lg cursor-default backdrop-blur-lg md:max-w-lg left-1/2"
+			class={`absolute inset-0 flex items-center justify-between  duration-300 px-3 bg-transparent  text-gray-400 pointer-events-none`}
 		>
-			{#if $showOptions}
-				<div class="flex flex-row flex-wrap w-full overflow-visible md:max-w-lg">
-					<p />
-					{#each sortedOptions as option}
-						<button
-							on:click={() => {
-								addChip(option);
-							}}
-							class={`px-2 py-1 text-xs mr-2 mb-2 duration-300 ${
-								// @ts-ignore
-								optionColorsMap[option]
-							} rounded-md hover:bg-pink-200`}
-						>
-							@{option}
-						</button>
-					{/each}
-				</div>
-			{/if}
-			<div class="text-black">Search Results</div>
+			<!-- <i class="ml-1 fas fa-search" /> -->
+			<Icon icon={magnifyingGlass} class="text-gray-600" />
+			<div
+				class={`flex items-center justify-center py-3 text-gray-600  
+			}`}
+			>
+				{#if $searchClicked}
+					<div
+						class="flex flex-row items-center px-2 mx-1 text-sm text-center bg-gray-300 rounded-md"
+					>
+						Esc
+					</div>
+				{:else if isMac}
+					<div
+						class="flex flex-row items-center px-2 mx-1 text-sm text-center bg-gray-300 rounded-md"
+					>
+						<Icon icon={commandIcon} />
+						<div>K</div>
+					</div>
+				{:else}
+					<div
+						class="flex flex-row items-center px-2 mx-1 text-sm text-center bg-gray-300 rounded-md"
+					>
+						<span>Ctrl K</span>
+					</div>
+				{/if}
+			</div>
 		</div>
-	{/if}
-	<!-- ? Search Results and Tags Div END -->
+		<!-- {/if} -->
+		<!-- * Placeholders END -->
+		<!-- ! Search Bar START -->
+		<div
+			role="textbox"
+			tabindex="0"
+			bind:this={inputElement}
+			contenteditable="true"
+			class={`flex items-center w-full h-12 px-4 rounded-lg outline-none  md:max-w-lg cursor-text focus:outline-none padded-text editable duration-300 ${
+				$searchClicked ? 'outline-none  bg-white' : 'outline-none  bg-transparent'
+			}`}
+			data-placeholder="Search"
+			on:keydown={handleKeyDown}
+			on:input={handleInput}
+		>
+			‎
+		</div>
+		<!-- ! Search Bar END -->
+
+		<!-- ? Search Results and Tags Div START -->
+		{#if $searchClicked}
+			<div
+				on:keydown={() => {}}
+				tabindex="0"
+				transition:slide={{ duration: 300, easing: quintOut, axis: 'y' }}
+				role="textbox"
+				on:click|stopPropagation
+				class="absolute z-50 flex flex-col justify-center w-full px-2 py-2 overflow-y-scroll transform -translate-x-1/2 bg-white rounded-b-lg cursor-default backdrop-blur-lg md:max-w-lg left-1/2"
+			>
+				{#if $showOptions}
+					<div class="flex flex-row flex-wrap w-full overflow-visible md:max-w-lg">
+						<p />
+						{#each sortedOptions as option}
+							<button
+								on:click={() => {
+									addChip(option);
+								}}
+								class={`px-2 py-1 text-xs mr-2 mb-2 duration-300 ${
+									// @ts-ignore
+									optionColorsMap[option]
+								} rounded-md hover:bg-pink-200`}
+							>
+								@{option}
+							</button>
+						{/each}
+					</div>
+				{/if}
+				<div class="text-black">Search Results</div>
+			</div>
+		{/if}
+		<!-- ? Search Results and Tags Div END -->
+	</div>
 </div>
+
+<!-- 
+{#if $currentPathModified.startsWith('/courses')}
+		{#if $currentPathModified.split('/').filter((item) => item !== '').length > 1}
+			<div
+				class="flex flex-row items-center h-12 max-w-full px-2 overflow-x-scroll bg-white w-fit rounded-xl"
+			>
+				{#each $currentPathModified.split('/').filter((item) => item !== '') as item, index}
+					<div
+						in:slide={{ duration: 300, easing: quintOut, axis: 'y' }}
+						class="flex flex-row items-center"
+						style="white-space: nowrap; min-width: max-content;"
+					>
+						<a
+							href={`${truncatePath($currentPath, index)}`}
+							class={`text-sm duration-200   ${
+								$currentPathModified.split('/').filter((item) => item !== '').length === index + 1
+									? 'text-gray-400 cursor-default'
+									: 'text-black hover:text-emerald-400 cursor-pointer'
+							} `}>{item}</a
+						>
+						{#if $currentPathModified.split('/').filter((item) => item !== '').length !== index + 1}
+							<Icon icon={caretRightLight} />
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/if}
+	{/if} -->
 
 <!-- * Main Outer DIV END-->
 

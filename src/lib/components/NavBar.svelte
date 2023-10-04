@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import SearchBar from './SearchBar.svelte';
 	import Icon from '@iconify/svelte';
 
@@ -10,10 +10,13 @@
 	import listLight from '@iconify/icons-ph/list-light';
 	import usersLight from '@iconify/icons-ph/users-light';
 	import houseLight from '@iconify/icons-ph/house-light';
+	import { onMount } from 'svelte';
 </script>
 
 <div class="flex justify-center px-2">
-	<div class="z-50 flex flex-row items-center w-full h-16 py-2 mt-4 md:justify-between max-w-screen-2xl">
+	<div
+		class="z-50 flex flex-row items-center w-full h-16 py-2 mt-4 md:justify-between max-w-screen-2xl"
+	>
 		<Icon icon={listLight} width="28" class="flex lg:hidden" />
 
 		<div class="flex-row items-center hidden gap-4 lg:flex">

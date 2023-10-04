@@ -1,19 +1,6 @@
 <script lang="ts">
 	import NavBar from '$lib/components/NavBar.svelte';
-	import { onMount } from 'svelte';
 	import '../app.css';
-	let mouseX = 0;
-	let mouseY = 0;
-	let widgetX = 0;
-	let widgetY = 0;
-
-	function handleMouseMove(event: any) {
-		mouseX = event.clientX;
-		mouseY = event.clientY;
-	}
-
-	$: widgetX = widgetX + (mouseX - widgetX) * 0.1;
-	$: widgetY = widgetY + (mouseY - widgetY) * 0.1;
 </script>
 
 <div

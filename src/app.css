@@ -8,6 +8,7 @@
 @tailwind utilities;
 
 
+
 .overlay {
     margin-bottom: 1rem;
     z-index: 50;
@@ -16,4 +17,25 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+}
+
+
+glass-effect {
+    @apply bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+}
+
+h1 {
+    @apply text-2xl text-gray-900;
+}
+
+h2 {
+    @apply text-xl text-gray-900;
+}
+
+h3 {
+    @apply text-lg text-gray-900;
+}
+
+sub {
+    @apply text-sm text-gray-900;
 }

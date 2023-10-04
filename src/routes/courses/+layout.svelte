@@ -2,36 +2,38 @@
 	import Icon from '@iconify/svelte';
 
 	import caretRightLight from '@iconify/icons-ph/caret-right-light';
-
-	let path = ['Courses', 'Directed Research', 'Assignments', 'Assignment 1'];
+	import { currentPath, currentPathModified, truncatePath } from '$lib/stores/pathStore';
+	import { slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 </script>
 
-<div class="flex flex-col justify-between w-full h-full gap-4">
-	<div class="flex flex-col w-full h-full">
+<div class="flex flex-col items-center justify-between w-full h-full">
+	<div class="w-full h-full">
 		<slot />
 	</div>
-
 	<!-- The below will be page specific tools that can be used by the user -->
-	<div class="flex flex-row items-center justify-between">
-		<!-- TODO: This is a special place that holds all the special options / actions for the course, will contain a navigation panel, some quick tools like adding a todo, and these options / actions will change based on which sub directory the user is in.
-		-->
-		<p>Holder</p>
-		<!-- this is a navigation panel that will contain the path the users are in and on a click they can simply move back to a previous page
-		for example if a user is under courses > course > assignment > assignment 1
-		they can simply click on the course and move back to the course page
-		-->
+	<div class="fixed flex flex-row justify-center w-full h-12 bottom-5">
 		<div
-			class="absolute flex flex-row items-center h-10 max-w-full px-2 overflow-x-scroll transform -translate-x-1/2 bg-white w-fit rounded-xl left-1/2"
+			class="flex flex-row items-center h-12 max-w-full px-2 overflow-x-scroll bg-white shadow-lg w-fit rounded-xl"
 		>
-			{#each path as item}
+			{#each $currentPathModified.split('/').filter((item) => item !== '') as item, index}
 				<div
+					in:slide={{ duration: 300, easing: quintOut, axis: 'y' }}
 					class="flex flex-row items-center"
 					style="white-space: nowrap; min-width: max-content;"
 				>
-					<a href="/" class="text-sm duration-200 cursor-pointer hover:text-emerald-400">{item}</a>
-					<Icon icon={caretRightLight} />
+					<a
+						href={`${truncatePath($currentPath, index)}`}
+						class={`text-sm duration-200   ${
+							$currentPathModified.split('/').filter((item) => item !== '').length === index + 1
+								? 'text-gray-400 cursor-default'
+								: 'text-black hover:text-emerald-400 cursor-pointer'
+						} `}>{item}</a
+					>
+					{#if $currentPathModified.split('/').filter((item) => item !== '').length !== index + 1}
+						<Icon icon={caretRightLight} />
+					{/if}
 				</div>
-				<!-- content here -->
 			{/each}
 		</div>
 	</div>
