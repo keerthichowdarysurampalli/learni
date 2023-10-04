@@ -36,6 +36,6 @@ h3 {
     @apply text-lg text-gray-900;
 }
 
-sub {
-    @apply text-sm text-gray-900;
+p {
+    @apply text-gray-800;
 }

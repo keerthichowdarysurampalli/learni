@@ -4,7 +4,7 @@
 	import arrowRightLight from '@iconify/icons-ph/arrow-right-light.js';
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
-	import { currentPath, currentPathModified } from '$lib/stores/pathStore';
+	import { currentPath, currentPathModified } from '$lib/stores/pathStore.js';
 
 	export let data;
 
