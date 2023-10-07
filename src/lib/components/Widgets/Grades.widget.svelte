@@ -1,7 +1,8 @@
 <script>
 	export let isFull = false;
-	</script>
-	
+	console.log(isFull);
+</script>
+
 <div>
 	<p>Grades go here.</p>
 </div>

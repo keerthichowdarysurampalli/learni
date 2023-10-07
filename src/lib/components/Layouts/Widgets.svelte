@@ -1,7 +1,13 @@
 <script lang="ts">
 	import FullWidget from './FullWidget.svelte';
 	import SplitWidget from './SplitWidget.svelte';
-	import { isColFull, _getCol, getColWidgets, getHeading, getBody, showWidgetList } from '$lib/components/Layouts/layoutStore';
+	import {
+		isColFull,
+		getColWidgets,
+		getHeading,
+		getBody,
+		showWidgetList
+	} from '$lib/components/Layouts/layoutStore';
 	import WidgetsListOverlay from './WidgetsListOverlay.svelte';
 </script>
 
@@ -18,13 +24,21 @@
 		<div slot="top-heading">
 			{getHeading($getColWidgets(1).firstWidget)}
 		</div>
-		<svelte:component this={getBody($getColWidgets(1).firstWidget)}  isFull={false} slot="top-body" />
+		<svelte:component
+			this={getBody($getColWidgets(1).firstWidget)}
+			isFull={false}
+			slot="top-body"
+		/>
 		{getBody($getColWidgets(1).firstWidget)}
 
 		<div slot="bottom-heading">
 			{getHeading($getColWidgets(1).secondWidget)}
 		</div>
-		<svelte:component this={getBody($getColWidgets(1).secondWidget)}  isFull={false} slot="bottom-body" />
+		<svelte:component
+			this={getBody($getColWidgets(1).secondWidget)}
+			isFull={false}
+			slot="bottom-body"
+		/>
 	</SplitWidget>
 {/if}
 
@@ -41,12 +55,20 @@
 		<div slot="top-heading">
 			{getHeading($getColWidgets(2).firstWidget)}
 		</div>
-		<svelte:component this={getBody($getColWidgets(2).firstWidget)} isFull={false} slot="top-body" />
+		<svelte:component
+			this={getBody($getColWidgets(2).firstWidget)}
+			isFull={false}
+			slot="top-body"
+		/>
 
 		<div slot="bottom-heading">
 			{getHeading($getColWidgets(2).secondWidget)}
 		</div>
-		<svelte:component this={getBody($getColWidgets(2).secondWidget)} isFull={false} slot="bottom-body" />
+		<svelte:component
+			this={getBody($getColWidgets(2).secondWidget)}
+			isFull={false}
+			slot="bottom-body"
+		/>
 	</SplitWidget>
 {/if}
 
@@ -63,12 +85,20 @@
 		<div slot="top-heading">
 			{getHeading($getColWidgets(3).firstWidget)}
 		</div>
-		<svelte:component this={getBody($getColWidgets(3).firstWidget)} isFull={false} slot="top-body" />
+		<svelte:component
+			this={getBody($getColWidgets(3).firstWidget)}
+			isFull={false}
+			slot="top-body"
+		/>
 
 		<div slot="bottom-heading">
 			{getHeading($getColWidgets(3).secondWidget)}
 		</div>
-		<svelte:component this={getBody($getColWidgets(3).secondWidget)} isFull={false} slot="bottom-body" />
+		<svelte:component
+			this={getBody($getColWidgets(3).secondWidget)}
+			isFull={false}
+			slot="bottom-body"
+		/>
 	</SplitWidget>
 {/if}
 

@@ -1,5 +1,7 @@
 <script lang="ts">
-	import NavBar from '$lib/components/NavBar.svelte';
+	//  @vamshinenu 2023 learni.app
+	// LETS ROCK!
+	import NavBar from '$lib/components/global/NavBar.svelte';
 	import '../app.css';
 </script>
 

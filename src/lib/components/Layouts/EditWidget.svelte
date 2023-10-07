@@ -5,11 +5,9 @@
 	import squareFill from '@iconify/icons-ph/square-fill';
 	import squareSplitVerticalFill from '@iconify/icons-ph/square-split-vertical-fill';
 	import Icon from '@iconify/svelte';
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	export let colNumber = 0;
-
 </script>
 
 <div in:fade={{ duration: 100 }} class="rounded-lg overlay-blur" id="widget-options">

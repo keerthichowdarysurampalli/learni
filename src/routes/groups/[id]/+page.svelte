@@ -1,6 +1,6 @@
 <script>
 	/** @type {import('./$types').PageData} */
-	export let data;
+	// export let data;
 </script>
 
 <h1>Group based on ID</h1>

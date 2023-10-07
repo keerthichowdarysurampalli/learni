@@ -1,12 +1,11 @@
-<script lang="ts">
+<script>
 	import Icon from '@iconify/svelte';
 	import arrowRightLight from '@iconify/icons-ph/arrow-right-light';
-	import downloadSimpleLight from '@iconify/icons-ph/download-simple-light';
+
 	import uploadSimpleLight from '@iconify/icons-ph/upload-simple-light';
 	import arrowSquareOutLight from '@iconify/icons-ph/arrow-square-out-light';
-	import eyeLight from '@iconify/icons-ph/eye-light';
 
-	import { scale, slide } from 'svelte/transition';
+	import { scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
 	const items = [1, 2, 3, 4];
@@ -174,7 +173,10 @@
 		}
 	];
 
-	export let isFull: boolean;
+	/**
+	 * @type {boolean}
+	 */
+	export let isFull;
 </script>
 
 <div class="flex flex-col items-end justify-between w-full h-full pb-8 select-none">

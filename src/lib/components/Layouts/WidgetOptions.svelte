@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import dotsThreeOutlineVerticalFill from '@iconify/icons-ph/dots-three-outline-vertical-fill';
 	import Icon from '@iconify/svelte';
 
@@ -6,19 +6,17 @@
 	import { quintOut } from 'svelte/easing';
 
 	import xBold from '@iconify/icons-ph/x-bold';
-	import {
-		changeCol,
-		col1EditToggle,
-		col2EditToggle,
-		col3EditToggle,
-		isColFull,
-		showWidgetList,
-		editToggledWidget
-	} from './layoutStore';
+	import { changeCol, isColFull } from './layoutStore';
 	import { editLayout, editWidget } from '$lib/actions/widgetOptions';
 	let showWidgetOptions = false;
-	export let colNumber: number;
-	export let widgetPos: number;
+	/**
+	 * @type {number}
+	 */
+	export let colNumber;
+	/**
+	 * @type {any}
+	 */
+	export let widgetPos;
 
 	const isFull = $isColFull(colNumber);
 </script>
@@ -54,9 +52,7 @@
 		>
 			<button
 				class="w-full px-4 py-2 text-center duration-200 bg-white hover:text-emerald-400 rounded-t-xl"
-				use:editWidget={{ colNumber, widgetPos }}
-
-				>Edit Widget</button
+				use:editWidget={{ colNumber, widgetPos }}>Edit Widget</button
 			>
 			<button
 				class="w-full px-4 py-2 text-center duration-200 bg-white hover:text-emerald-400"
@@ -86,7 +82,6 @@
 	$col3EditToggle = true;
 	$showWidgetList = true;
 }} -->
-
 
 <!-- 				on:click={() => {
 					if (colNumber === 1) {

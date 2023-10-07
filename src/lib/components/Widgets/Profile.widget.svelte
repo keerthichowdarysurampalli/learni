@@ -1,5 +1,6 @@
 <script>
 	export let isFull = false;
+	console.log(isFull);
 </script>
 
 <div>

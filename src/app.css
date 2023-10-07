@@ -7,35 +7,57 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .overlay {
-    margin-bottom: 1rem;
-    z-index: 50;
-    border-radius: 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+	margin-bottom: 1rem;
+	z-index: 50;
+	border-radius: 1rem;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
+@layer utilities {
+	.glass-effect {
+		@apply bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+	}
+}
+/* styles.css */
+@keyframes fadeInScaleUp {
+	0% {
+		opacity: 0;
+		transform: scale(0.75);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.animate-fade-in-scale-up {
+	animation: fadeInScaleUp 100ms ease-in-out forwards;
+}
 
 glass-effect {
-    @apply bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+	@apply bg-white bg-opacity-50 rounded-2xl backdrop-filter backdrop-blur-xl bg-clip-padding;
+}
+
+.tooltip {
+	@apply animate-fade-in-scale-up shadow-xl z-50 top-0 border left-0 bg-white bg-opacity-50  backdrop-filter backdrop-blur-xl bg-clip-padding absolute px-2 py-1 rounded-md text-sm text-gray-700;
 }
 
 h1 {
-    @apply text-2xl text-gray-900;
+	@apply text-2xl text-gray-900;
 }
 
 h2 {
-    @apply text-xl text-gray-900;
+	@apply text-xl text-gray-900;
 }
 
 h3 {
-    @apply text-lg text-gray-900;
+	@apply text-lg text-gray-900;
 }
 
 p {
-    @apply text-gray-800;
+	@apply text-gray-800;
 }

@@ -161,9 +161,9 @@ export const load = ({ params }) => {
 		}
 	];
 
-	const course = courses.find(course => course.code === params.courseId);
+	const course = courses.find((course) => course.code === params.courseId);
 
 	return {
 		course
-	}
-}
+	};
+};

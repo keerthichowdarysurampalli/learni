@@ -1,14 +1,16 @@
-<script lang="ts">
+<script>
 	import './Layout.css';
 	import { selectedCol, getHeading, getColWidgets, editToggledWidget } from './layoutStore';
 	import EditWidget from './EditWidget.svelte';
 	import WidgetOptions from './WidgetOptions.svelte';
 	import { scale } from 'svelte/transition';
 	import { longPressAction } from '$lib/actions/longpress';
-	import { bounceInOut, expoIn, expoInOut, expoOut, quintOut } from 'svelte/easing';
+	import { quintOut } from 'svelte/easing';
 
-	let timer: number | undefined;
-	export let colNumber: number;
+	/**
+	 * @type {number}
+	 */
+	export let colNumber;
 
 	const ButtonNameTop = `splitCol${colNumber}1`;
 	const ButtonNameBottom = `splitCol${colNumber}2`;
@@ -53,7 +55,7 @@ ${
 	on:click={() => {
 		$selectedCol = ButtonNameTop;
 	}}
-	on:keydown={(event) => {
+	on:keydown={(/** @type {{ key: string; }} */ event) => {
 		if (event.key === 'Enter' || event.key === ' ') {
 			$selectedCol = ButtonNameTop;
 		}
@@ -95,7 +97,7 @@ ${
 	on:click={() => {
 		$selectedCol = ButtonNameBottom;
 	}}
-	on:keydown={(event) => {
+	on:keydown={(/** @type {{ key: string; }} */ event) => {
 		if (event.key === 'Enter' || event.key === ' ') {
 			$selectedCol = ButtonNameBottom;
 		}

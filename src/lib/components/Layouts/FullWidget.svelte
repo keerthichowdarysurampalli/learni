@@ -1,17 +1,18 @@
-<script lang="ts">
+<script>
 	import './Layout.css';
 	import { selectedCol, getColWidgets, getHeading, editToggledWidget } from './layoutStore';
 	import EditWidget from './EditWidget.svelte';
 	import WidgetOptions from './WidgetOptions.svelte';
-	import { bounceInOut, expoIn, expoInOut, expoOut, quintOut } from 'svelte/easing';
+	import { quintOut } from 'svelte/easing';
 	import { scale } from 'svelte/transition';
 	import { longPressAction } from '$lib/actions/longpress';
 
-	export let colNumber: number;
+	/**
+	 * @type {number}
+	 */
+	export let colNumber;
 
 	const ButtonName = `fullCol${colNumber}`;
-
-	let timer: number;
 
 	const link = '/' + getHeading($getColWidgets(colNumber).firstWidget).toLowerCase();
 
@@ -50,7 +51,7 @@
 	on:click={() => {
 		$selectedCol = ButtonName;
 	}}
-	on:keydown={(event) => {
+	on:keydown={(/** @type {{ key: string; }} */ event) => {
 		if (event.key === 'Enter' || event.key === ' ') {
 			$selectedCol = ButtonName;
 		}

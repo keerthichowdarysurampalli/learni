@@ -10,6 +10,7 @@
 		omitDomainFromUrl,
 		reformatURL
 	} from '$lib/stores/pathStore';
+	import { changeFileColor } from '$lib/api/coursecontent/changeFileColor';
 	import arrowLeft from '@iconify/icons-fa6-solid/arrow-left';
 	import folderPlus from '@iconify/icons-fa6-solid/folder-plus';
 
@@ -23,23 +24,24 @@
 	import FileComponent from '$lib/components/courseContent/FileComponent.svelte';
 
 	import { writable } from 'svelte/store';
-	import { fade, scale, slide } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { goto } from '$app/navigation';
 
 	$: $currentPath = omitDomainFromUrl($page.url.href);
 	$: $currentPathModified = reformatURL($page.url.href);
 
-	$: console.log($selectedFile);
 	$: selectedFileColor = '';
 	$: if ($selectedFile) {
 		selectedFileColor = `bg-${
 			$selectedFile && $selectedFile.iconColor.split('-').splice(1).join('-')
 		}`;
 	}
-
-	$: console.log(selectedFileColor);
 	// get actions on file from the server.
+	// READ - DOWNLOAD and SHARE
+	// CREATE - UPLOAD
+	// UDPATE - EDIT
+	// DELETE - DELETE
 	const actions = ['Download', 'Share', 'Edit', 'Delete'];
 
 	const getIconForAction = (action) => {
@@ -62,7 +64,7 @@
 	$: files = data.files;
 
 	function goBack() {
-		goto(`?path=${searchParams.join('/')}`);
+		// goto(`?path=${searchParams.join('/')}`);
 	}
 
 	const fileColors = [
@@ -87,6 +89,15 @@
 		'text-violet-400',
 		'text-purple-400',
 		'text-indigo-400',
+		'bg-gray-400',
+		'bg-emerald-400',
+		'bg-red-400',
+		'bg-blue-400',
+		'bg-yellow-400',
+		'bg-orange-400',
+		'bg-violet-400',
+		'bg-purple-400',
+		'bg-indigo-400',
 		'hover:bg-red-400',
 		'hover:bg-gray-400',
 		'hover:bg-emerald-400',
@@ -97,6 +108,7 @@
 		'hover:bg-purple-400',
 		'hover:bg-indigo-400'
 	];
+
 	let divElement;
 
 	// Whenever selectedFile changes, update the class
@@ -133,15 +145,15 @@
 	<div class="text-red-400" />
 	<div class="text-purple-400" />
 	<div class="text-indigo-400" />
-	<div class="bg-gray-400" />
-	<div class="bg-emerald-400" />
-	<div class="bg-blue-400" />
-	<div class="bg-yellow-400" />
-	<div class="bg-orange-400" />
-	<div class="bg-violet-400" />
-	<div class="bg-red-400" />
-	<div class="bg-purple-400" />
-	<div class="bg-indigo-400" />
+	<div class="hover:bg-gray-400" />
+	<div class="hover:bg-emerald-400" />
+	<div class="hover:bg-blue-400" />
+	<div class="hover:bg-yellow-400" />
+	<div class="hover:bg-orange-400" />
+	<div class="hover:bg-violet-400" />
+	<div class="hover:bg-red-400" />
+	<div class="hover:bg-purple-400" />
+	<div class="hover:bg-indigo-400" />
 </div>
 
 <!-- <h1 class="mb-2">Course Content</h1> -->
@@ -207,7 +219,7 @@
 			<div class="flex flex-row w-full gap-4 h-1/4">
 				<div
 					in:fade={{ duration: 500, easing: quintOut }}
-					class="flex flex-col items-center justify-center w-full h-full px-4 py-4 bg-black glass-effect rounded-2xl"
+					class="flex flex-col items-center justify-center w-full h-full px-4 py-4 shadow-md glass-effect rounded-2xl"
 				>
 					<!-- {#if $selectedFile.type === 'FOLDER'} -->
 					<Icon
@@ -215,19 +227,26 @@
 						width="64"
 						class={`${$selectedFile.iconColor}`}
 					/>
-					<!-- {:else} -->
-					<!-- <h2>Preview</h2> -->
-					<!-- content here -->
-					<!-- {/if} -->
 				</div>
-				<div class="flex flex-col h-full gap-2 justify-evenly w-fit">
+				<div class="flex flex-col items-center w-8 h-full gap-2 justify-evenly">
 					{#each fileColors as color}
 						<button
-							on:click={() => {
+							on:click={async () => {
+								if (!$selectedFile) return;
+								if ($selectedFile.iconColor === `text-${color}`) return;
+								const res = await changeFileColor($selectedFile._id, `text-${color}`);
+								if (!res) {
+									// show toast telling user that there was an error
+									console.log('error');
+									return;
+								}
 								files.find((file) => file._id === $selectedFile._id).iconColor = `text-${color}`;
+								files = files;
 								$selectedFile.iconColor = `text-${color}`;
 							}}
-							class={`w-5 h-5 bg-${color} rounded-full`}
+							class={`w-4 h-4 bg-${color} duration-300 rounded-full ${
+								$selectedFile.iconColor === `text-${color}` ? 'w-6 h-6 shadow-xl' : ''
+							}`}
 						/>
 					{/each}
 				</div>
@@ -237,17 +256,13 @@
 			<!--! FILE INFORMATION -->
 			<div class={`${$selectedFile.iconColor} flex flex-col w-full gap-2 `}>
 				<h2 class="font-bold">{$selectedFile.name.split('/').pop()}</h2>
+				<div class="flex flex-row text-xs text-gray-700">
+					<p>{$selectedFile.size} MB</p>
+				</div>
 				<p class="text-xs">
 					{$selectedFile.description}
 				</p>
-				<div class="flex flex-row justify-between w-full text-xs text-gray-8001">
-					<p>File Size:</p>
-					<p>{$selectedFile.size} MB</p>
-				</div>
-				<div class="flex flex-row justify-between w-full text-xs text-gray-800">
-					<p>File Type:</p>
-					<p>{$selectedFile.type.toLowerCase()}</p>
-				</div>
+
 				<div class="flex flex-row justify-between w-full text-xs text-gray-800">
 					<p>Uplaoded:</p>
 					<p>{$selectedFile.date}</p>
@@ -259,13 +274,15 @@
 
 				<div class="flex flex-row w-full gap-2 justify-evenly">
 					{#each actions as action}
-						<div class={`action-button group hover:rounded-2xl hover:${selectedFileColor}`}>
+						<div
+							class={`action-button group hover:rounded-3xl duration-1000 hover:${selectedFileColor}`}
+						>
 							<Icon
 								icon={getIconForAction(action)}
 								width="24"
 								class="duration-100 group-hover:text-white"
 							/>
-							<p class="text-xs duration-100 group-hover:text-white">{action}</p>
+							<p class="hidden text-xs duration-100 lg:flex group-hover:text-white">{action}</p>
 						</div>
 					{/each}
 				</div>
@@ -294,7 +311,7 @@
 
 <style>
 	.action-button {
-		@apply flex flex-col items-center justify-center w-1/2 h-16 gap-1 px-4 py-2 duration-500 bg-gray-50 cursor-pointer rounded-xl;
+		@apply flex flex-col items-center justify-center w-1/2 h-16 gap-1 px-4 py-2 duration-500 bg-white cursor-pointer rounded-lg;
 	}
 
 	.glass-effect {

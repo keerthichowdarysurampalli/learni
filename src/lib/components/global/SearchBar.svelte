@@ -2,30 +2,28 @@
 	Future IMPL
 	TODO: based on the current page, automatically set the option to the current page. Ex: if on the course page, set the option to course
 	//TODO: add a search icon
-	
 -->
-<!-- 
-	for now 45 is the max lenght of character for the search term. including the tags.
- -->
+<!-- for now 45 is the max lenght of character for the search term. including the tags.-->
 
-<script lang="ts">
+<script>
 	import commandIcon from '@iconify/icons-ph/command';
 	import magnifyingGlass from '@iconify/icons-ph/magnifying-glass';
 	import Icon from '@iconify/svelte';
 
-	import { fade, slide } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
-	import caretRightLight from '@iconify/icons-ph/caret-right-light';
-	import { currentPath, truncatePath } from '$lib/stores/pathStore';
-	import { split } from 'postcss/lib/list';
+	import { currentPath } from '$lib/stores/pathStore';
 	import { currentPathModified } from '$lib/stores/pathStore';
 
 	const searchClicked = writable(false);
 	const showPlaceholder = writable(true);
 
-	let inputElement: HTMLElement;
+	/**
+	 * @type {HTMLDivElement}
+	 */
+	let inputElement;
 
 	const showOptions = writable(false);
 
@@ -42,13 +40,19 @@
 
 	let sortedOptions = options;
 	let chips = [];
-	let isMac: any;
+	/**
+	 * @type {boolean}
+	 */
+	let isMac;
 	onMount(() => {
 		isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
 	});
 
 	onMount(() => {
-		function handleKeyDown(event: { metaKey: any; ctrlKey: any; key: string }) {
+		/**
+		 * @param {KeyboardEvent} event
+		 */
+		function handleKeyDown(event) {
 			if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
 				$searchClicked = true;
 				if (searchClicked && inputElement) {
@@ -71,7 +75,10 @@
 	console.log($currentPath);
 
 	onMount(() => {
-		function handleClickOutside(event: any) {
+		/**
+		 * @param {any} event
+		 */
+		function handleClickOutside(event) {
 			if (!event.target.closest('.search-container')) {
 				$searchClicked = false;
 			}
@@ -94,7 +101,10 @@
 	});
 
 	// Attach this function to the 'keydown' event of your contenteditable div
-	function handleKeyDown(event: KeyboardEvent) {
+	/**
+	 * @param {any} event
+	 */
+	function handleKeyDown(event) {
 		if (event.key === 'Tab') {
 			event.preventDefault(); // Prevent the default tab behavior
 
@@ -103,14 +113,14 @@
 				// Your logic to replace the current word with firstOption
 				// This will depend on how you're managing the content of your div
 				// For example, you might find the '@' symbol and replace the word following it
-				let value = (event.target as HTMLElement).innerText;
+				let value = event.target.innerText;
 				const atIndex = value.lastIndexOf('@');
 				if (atIndex !== -1) {
 					const prefix = value.substring(0, atIndex);
 					const newContent = `${prefix}@${firstOption}\u00A0`;
 					// (event.target as HTMLElement).innerText = newContent;
 					// const newContent = `${prefix}@${firstOption}\u00A0`;
-					const divElement = event.target as HTMLElement;
+					const divElement = event.target;
 					divElement.innerText = newContent;
 
 					// Trigger an input event
@@ -122,13 +132,16 @@
 
 					// Move the cursor to the end (or wherever appropriate)
 					// Move the cursor to the end (or wherever appropriate)
-					setCursorToEnd(event.target as HTMLElement);
+					setCursorToEnd(event.target);
 				}
 			}
 		}
 	}
 
-	function addChip(option: string) {
+	/**
+	 * @param {string} option
+	 */
+	function addChip(option) {
 		// Your existing logic to add the chip
 		chips.push(option);
 		$showOptions = false;
@@ -153,7 +166,10 @@
 		}
 	}
 
-	function setCursorToEnd(el: Node) {
+	/**
+	 * @param {Node} el
+	 */
+	function setCursorToEnd(el) {
 		const range = document.createRange();
 		const sel = window.getSelection();
 		range.setStart(el, el.childNodes.length);
@@ -164,8 +180,11 @@
 		sel.addRange(range);
 	}
 
-	function handleInput(event: any) {
-		const target = event.target as HTMLElement;
+	/**
+	 * @param {any} event
+	 */
+	function handleInput(event) {
+		const target = event.target;
 		const value = target.innerText
 			.replace(/[^\x20\xA0\x200E\x0A-\x7E]/g, '') // Remove special characters
 			.replace(/\n/g, ' '); // Split by space but keep the spaces

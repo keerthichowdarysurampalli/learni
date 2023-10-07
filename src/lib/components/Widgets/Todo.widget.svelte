@@ -98,7 +98,7 @@
 				on:submit={() => {
 					console.log('hi');
 				}}
-				class="text-gray-400 border-none outline-none "
+				class="text-gray-400 border-none outline-none"
 			>
 				+ Add Todo
 			</p>

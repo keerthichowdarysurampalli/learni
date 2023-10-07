@@ -858,9 +858,9 @@ export const load = ({ params }) => {
 		loading.set(LoadingState.LOADED);
 		return {
 			courses
-		}
+		};
 	} catch (error) {
 		loading.set(LoadingState.ERROR);
 		console.log(error);
 	}
-}
+};
