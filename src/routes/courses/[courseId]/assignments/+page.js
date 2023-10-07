@@ -1,5 +1,8 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, url }) {
+
+	console.log('params', params);
+	console.log('url', url);
 	return {
 		assignments: [
 			{

@@ -103,28 +103,36 @@
 		$currentPath = $page.url.pathname;
 		$currentPathModified = reformatURL($page.url.href);
 	}
+	const possibleColors = [
+		'text-gray-400',
+		'text-emerald-400',
+		'text-red-400',
+		'text-blue-400',
+		'text-yellow-400',
+		'text-orange-400',
+		'text-violet-400',
+		'text-purple-400',
+		'text-indigo-400',
+		'bg-gray-400',
+		'bg-emerald-400',
+		'bg-red-400',
+		'bg-blue-400',
+		'bg-yellow-400',
+		'bg-orange-400',
+		'bg-violet-400',
+		'bg-purple-400',
+		'bg-indigo-400',
+		'hover:bg-red-400',
+		'hover:bg-gray-400',
+		'hover:bg-emerald-400',
+		'hover:bg-blue-400',
+		'hover:bg-yellow-400',
+		'hover:bg-orange-400',
+		'hover:bg-violet-400',
+		'hover:bg-purple-400',
+		'hover:bg-indigo-400'
+	];
 </script>
-
-<div hidden>
-	<div class="text-gray-400" />
-	<div class="text-emerald-400" />
-	<div class="text-blue-400" />
-	<div class="text-yellow-400" />
-	<div class="text-orange-400" />
-	<div class="text-violet-400" />
-	<div class="text-red-400" />
-	<div class="text-purple-400" />
-	<div class="text-indigo-400" />
-	<div class="hover:bg-gray-400" />
-	<div class="hover:bg-emerald-400" />
-	<div class="hover:bg-blue-400" />
-	<div class="hover:bg-yellow-400" />
-	<div class="hover:bg-orange-400" />
-	<div class="hover:bg-violet-400" />
-	<div class="hover:bg-red-400" />
-	<div class="hover:bg-purple-400" />
-	<div class="hover:bg-indigo-400" />
-</div>
 
 <!-- <h1 class="mb-2">Course Content</h1> -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
